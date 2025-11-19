@@ -1,0 +1,783 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <variables>
+    <variable type="IntentCandidate" id="cCZ.sC@Y~xkl64[/puuZ">RestaurantIntent</variable>
+    <variable type="IntentCandidate" id="me}CqA0n^ZjGO^f`nNfz">SightseeingIntent</variable>
+    <variable type="IntentCandidate" id="u53oEhzFKKOq%q.j77)x">YesNoIntent</variable>
+    <variable type="GenericValue" id="tph%|.wb)UK!4O_Kqn!_">step</variable>
+    <variable type="GenericValue" id="UQ.Cb=H1f-ji_e-}vzLR">persona</variable>
+    <variable type="GenericValue" id="][VC1l[!yr@$Y=TNu){?">done</variable>
+    <variable type="GenericValue" id="u#P)yLEg-gpL/[+Vo+Vj">pax</variable>
+    <variable type="GenericValue" id="l=,]uTfGN3{w$}.;n1|e">time</variable>
+  </variables>
+  <block type="show options" id="9~%U#1_sY-_MJ-xVN(v)" x="-306" y="-226">
+    <statement name="imageOptions">
+      <block type="url option" id="P#`CoBO8sR3j4[/EmzLi">
+        <field name="title">switch Persona</field>
+        <field name="url">url</field>
+        <field name="state">switchPersona</field>
+      </block>
+    </statement>
+  </block>
+  <block type="state" id="nBx)]mAkgE_|WdVTwNG," x="227" y="-229">
+    <field name="stateName">waitForNeed</field>
+    <statement name="actions">
+      <block type="action_wait" id=")?ztfG^$=@N/1)@cO;.V">
+        <field name="delay">600</field>
+        <next>
+          <block type="listen" id="2]u0aA*`Bi^HGj,{siwo"></block>
+        </next>
+      </block>
+    </statement>
+    <next>
+      <block type="onresponse_intent" id="ve[`j7RV:A;G,K9)hzog">
+        <value name="intent">
+          <block type="intent_variable" id="?O9Xq,/ZJy(~%QhlmtRP">
+            <field name="varname" id="cCZ.sC@Y~xkl64[/puuZ" variabletype="IntentCandidate">RestaurantIntent</field>
+          </block>
+        </value>
+        <statement name="actions">
+          <block type="goto" id="GeK{S(c1)uFSB2wxidT|">
+            <field name="stateName">proposeRestaurant</field>
+          </block>
+        </statement>
+        <next>
+          <block type="onresponse_intent" id="?pK(D/%)F]9(moZm]NU}">
+            <value name="intent">
+              <block type="intent_variable" id="wysg2Il#3Yp7T`qe0jzJ">
+                <field name="varname" id="me}CqA0n^ZjGO^f`nNfz" variabletype="IntentCandidate">SightseeingIntent</field>
+              </block>
+            </value>
+            <statement name="actions">
+              <block type="goto" id="_VD@wiR}Kl~.QAHe)[gk">
+                <field name="stateName">sightseeing</field>
+              </block>
+            </statement>
+            <next>
+              <block type="onresponse_any" id="00d,4C,vOk,z?e*o#[Gz">
+                <statement name="actions">
+                  <block type="say_text" id="]@l@$m?3Ukg_Ku/3E.V~">
+                    <value name="text">
+                      <shadow type="text" id="Q=SsC;@_eBFF7Ck]V;|H">
+                        <field name="value">I’m sorry, could you please rephrase that?</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="goto" id="`,m+O{k^^%YMkWtMwApT">
+                        <field name="stateName">waitForNeed</field>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+  <block type="define_intent" id=":`E+N-esbd{$,Kob}YOX" x="750" y="-199">
+    <field name="intent_name" id="cCZ.sC@Y~xkl64[/puuZ" variabletype="IntentCandidate">RestaurantIntent</field>
+    <value name="intent">
+      <block type="intent_simple" id="$=HHOdx%~I[puj^c)EIr">
+        <statement name="exampleBlocks">
+          <block type="intent_example" id="Av@2E7pQOL;U6g@5bu24">
+            <field name="text">eat</field>
+            <next>
+              <block type="intent_example" id="v[$@t=MC+2+Am#4+WP}?">
+                <field name="text">food</field>
+                <next>
+                  <block type="intent_example" id="L@,@xv9cjyjWM~xc?[gF">
+                    <field name="text">dining</field>
+                    <next>
+                      <block type="intent_example" id="8Ru(~b)[K8}ZFn!n;a.!">
+                        <field name="text">meal</field>
+                        <next>
+                          <block type="intent_example" id="[k(hx0vA39*P8:YN9NoM">
+                            <field name="text">lunch</field>
+                            <next>
+                              <block type="intent_example" id="tb{LQ(GCey[U*nExR#r-">
+                                <field name="text">dinner</field>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </value>
+  </block>
+  <block type="define_intent" id="fe%hD`V*I:k@HvoI4Obp" x="1083" y="-206">
+    <field name="intent_name" id="me}CqA0n^ZjGO^f`nNfz" variabletype="IntentCandidate">SightseeingIntent</field>
+    <value name="intent">
+      <block type="intent_simple" id="(PpC!AUMLx5J3Cx-49Ru">
+        <statement name="exampleBlocks">
+          <block type="intent_example" id="i$XSL{S`n2(kk!;6XUw$">
+            <field name="text">attraction</field>
+            <next>
+              <block type="intent_example" id="+HYi.M1Nw%%!@*=]`#4B">
+                <field name="text">visit</field>
+                <next>
+                  <block type="intent_example" id="PYeL`{p6gFR25^8w!SK=">
+                    <field name="text">tourist</field>
+                    <next>
+                      <block type="intent_example" id="-MRR9wSaTr`S)Ye@qwJ3">
+                        <field name="text">tour</field>
+                        <next>
+                          <block type="intent_example" id="SBQ3.OrA4DmhIs?*C;u$">
+                            <field name="text">activities</field>
+                            <next>
+                              <block type="intent_example" id="eCbB@I`I;.TZ`h+ydZ2@">
+                                <field name="text">places</field>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </value>
+  </block>
+  <block type="define_intent" id="[A1ajgXA1@?iCw~CR*?N" x="1391" y="-212">
+    <field name="intent_name" id="u53oEhzFKKOq%q.j77)x" variabletype="IntentCandidate">YesNoIntent</field>
+    <value name="intent">
+      <block type="intent_simple" id="0XUX2P#ZApEpqA1WwMR4">
+        <statement name="exampleBlocks">
+          <block type="intent_example" id="]{PR;L9.kJU5/r#?W4?x">
+            <field name="text">yes</field>
+            <next>
+              <block type="intent_example" id="f[maL?[YK%M=8=oQk2:i">
+                <field name="text">yeah</field>
+                <next>
+                  <block type="intent_example" id="8[zrFI*Z-n@XN60)dW4:">
+                    <field name="text">no</field>
+                    <next>
+                      <block type="intent_example" id="ac~F;A[58)CDBq=5mbO2">
+                        <field name="text">nope</field>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </value>
+  </block>
+  <block type="state" id="K@hhKE0K-A8H~Ydc],I%" x="-332" y="-87">
+    <field name="stateName">switchPersona</field>
+    <statement name="actions">
+      <block type="goto" id="96ucc^iyo+Y;r}v61OxA">
+        <field name="stateName">askPersona</field>
+      </block>
+    </statement>
+  </block>
+  <block type="state" id="_46JKy)Ci!b?D8Z:Zf:z" x="-141" y="-94">
+    <field name="stateName">sightseeing</field>
+    <statement name="actions">
+      <block type="action_gesture" id="XdM,M{NvO}CkjnF24}Fd">
+        <field name="gesture">Thoughtful</field>
+        <next>
+          <block type="say_text" id="nA^1C6S;46;7pbA#][.v">
+            <value name="text">
+              <shadow type="text" id="}HP2pdS#`p!gkAzTn#L;">
+                <field name="value">Museums, walking tours, or parks?</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="action_gesture" id="29[m~+xE6IF=r0WPI0]B">
+                <field name="gesture">Nod</field>
+                <next>
+                  <block type="action_wait" id="X?p83NR.P+JI+3_KLOeI">
+                    <field name="delay">600</field>
+                    <next>
+                      <block type="listen" id="S|`[j?`Q]G[y=U2t]AXk"></block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <next>
+      <block type="onresponse_intent" id="j%Oo!PR=p889p}*oM$:L">
+        <value name="intent">
+          <block type="intent_simple" id="Y(E1ELc^2eTsQ+56~=[A">
+            <statement name="exampleBlocks">
+              <block type="intent_example" id="T)#4dho;}A;(kMvWpRxU">
+                <field name="text">museum</field>
+              </block>
+            </statement>
+          </block>
+        </value>
+        <statement name="actions">
+          <block type="say_text" id="`R^rTIW`}LSwE`+P2[R%">
+            <value name="text">
+              <shadow type="text" id="pWLCwsl6DhaLb9vnMZJ}">
+                <field name="value">Rijksmuseum is 1 km away</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="goto" id="G=efsaumf$CSJfO:oJ8.">
+                <field name="stateName">sightConfirm</field>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="onresponse_intent" id="|{$3E:VXLb31VkM+nvP/">
+            <value name="intent">
+              <block type="intent_simple" id="w4p@U}6hn_Lxi+[0U:)5">
+                <statement name="exampleBlocks">
+                  <block type="intent_example" id="B~CF7M2vrecp7EsJ^];P">
+                    <field name="text">park</field>
+                  </block>
+                </statement>
+              </block>
+            </value>
+            <statement name="actions">
+              <block type="say_text" id="-RX$w}dl$C`_OIqYEz,z">
+                <value name="text">
+                  <shadow type="text" id="Zd-pd4Ij$q=4[YUyu;N,">
+                    <field name="value">Vondelpark’s a 5-minute bike ride.</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="goto" id="+k{uIOtyDS_f1X`R7smg">
+                    <field name="stateName">sightConfirm</field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <next>
+              <block type="onresponse_intent" id="GMdWA2l8AUBujvSOLon[">
+                <value name="intent">
+                  <block type="intent_simple" id="yN3@CkHvXY(J5x*5ZedN">
+                    <statement name="exampleBlocks">
+                      <block type="intent_example" id="(x#?fyoI}QM26{B/Okd6">
+                        <field name="text">walk</field>
+                        <next>
+                          <block type="intent_example" id="^30_W!7XQ:DmRo8HLo^|">
+                            <field name="text">walking</field>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </value>
+                <statement name="actions">
+                  <block type="say_text" id="q{ss+LK4;]T:V*NdM!OJ">
+                    <value name="text">
+                      <shadow type="text" id="}Za?b#IM8bqC`%{V2Shx">
+                        <field name="value">Canal trail is lovely.</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="goto" id="TZ3Ul[4HDJq9sZsGf8iv">
+                        <field name="stateName">sightConfirm</field>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <next>
+                  <block type="onresponse_any" id="^O@n/f$GXm{K%9fb?hgP">
+                    <statement name="actions">
+                      <block type="say_text" id="S5oRmnD^CByPO)5yd*s#">
+                        <value name="text">
+                          <shadow type="text" id="1o;$Hr0CR-Cbk!l4=yMa">
+                            <field name="value">I’m not sure—could you say museums, walking tours, or parks?</field>
+                          </shadow>
+                        </value>
+                        <next>
+                          <block type="goto" id="J?vh@tolTk:mZ[:fg%Mo">
+                            <field name="stateName">sightseeing</field>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+  <block type="state" id="zQ(BrD`pW2vfPP(rSNXb" deletable="false" editable="false" x="-359" y="68">
+    <field name="stateName">start</field>
+    <statement name="actions">
+      <block type="variable_set" id="=:j#EPwPh6#e-;93RLt`">
+        <field name="variable" id="tph%|.wb)UK!4O_Kqn!_" variabletype="GenericValue">step</field>
+        <value name="value">
+          <block type="text" id="!`N/5y(:)G9G3^4Rw[NY">
+            <field name="value">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="variable_set" id="!AS.9xMf1FOo}[ROd9+y">
+            <field name="variable" id="][VC1l[!yr@$Y=TNu){?" variabletype="GenericValue">done</field>
+            <value name="value">
+              <block type="text" id="zR;3Qx=VGYrR1wi924D(">
+                <field name="value">false</field>
+              </block>
+            </value>
+            <next>
+              <block type="variable_set" id=";HSp{@z#D0Q=zY,^-F3Z">
+                <field name="variable" id="u#P)yLEg-gpL/[+Vo+Vj" variabletype="GenericValue">pax</field>
+                <value name="value">
+                  <block type="text" id="PbM5T8E2xDlphTb3!.;:">
+                    <field name="value">2</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variable_set" id="=S.F{YBl[-Lzgr7jG`0U">
+                    <field name="variable" id="l=,]uTfGN3{w$}.;n1|e" variabletype="GenericValue">time</field>
+                    <value name="value">
+                      <block type="text" id="A}=o{cq)/;N)/+/LLM{=">
+                        <field name="value">19:30</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="goto" id="hLHcvmP4P?wqN|#!!A4l">
+                        <field name="stateName">askPersona</field>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="state" id="5/-3~n-,Cxu{ssuDXs3R" x="708" y="40">
+    <field name="stateName">proposeRestaurant</field>
+    <statement name="actions">
+      <block type="say_text" id="ZhYS/0-+V[g@}mo15#`s">
+        <value name="text">
+          <shadow type="text" id="!`BVF8_`r5nZ0rPGRx`R">
+            <field name="value">Great—vegetarian or local cuisine?</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="action_wait" id="$Aa/V9!7}eGAqBjc|p;K">
+            <field name="delay">600</field>
+            <next>
+              <block type="listen" id="X]lq,S)aS5p0,L(=geT;"></block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <next>
+      <block type="onresponse_intent" id="x,~AD2w2DyADyW6:,X*Y">
+        <value name="intent">
+          <block type="intent_simple" id="vBi98Tma!!9v82@#)OMp">
+            <statement name="exampleBlocks">
+              <block type="intent_example" id="U_{BB!.cH!q-LL.ZtLO-">
+                <field name="text">vegetarian</field>
+                <next>
+                  <block type="intent_example" id="MV::gqVMrX{|qL7H2}vl">
+                    <field name="text">veg</field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </value>
+        <statement name="actions">
+          <block type="say_text" id="?5v-3$OIf?]+-c4K/!_$">
+            <value name="text">
+              <shadow type="text" id=")/%Ft{|P^GFn,^*GaevP">
+                <field name="value">I know a plant-based café downtown. Sound good?</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="goto" id="ksUB!amKCrW!}YiBrOLG">
+                <field name="stateName">makeReservation</field>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="onresponse_intent" id="0uuE-O8;oatw1_hX;ySs">
+            <value name="intent">
+              <block type="intent_simple" id="9q1Tv6%F@.QtDyEJY9tw">
+                <statement name="exampleBlocks">
+                  <block type="intent_example" id="uwe[b/}wB+85`:87bov*">
+                    <field name="text">cuisine</field>
+                    <next>
+                      <block type="intent_example" id="f#a2ia,p|(vB%O6p2f@$">
+                        <field name="text">local</field>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </value>
+            <statement name="actions">
+              <block type="say_text" id="T8$rt^xH=gqxpCKq^;-R">
+                <value name="text">
+                  <shadow type="text" id="!rX6^F|W5s?7iDhIH2F%">
+                    <field name="value">PancakeHouse serves Dutch pancakes. Interested?</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="goto" id="36HX*HQvU*s)y)8x5uQ%">
+                    <field name="stateName">makeReservation</field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <next>
+              <block type="onresponse_any" id="7%$AJc/G2,6UF8dqi|fG">
+                <statement name="actions">
+                  <block type="say_text" id="Mj*PCH/lnz;N)l`Q#Jv;">
+                    <value name="text">
+                      <shadow type="text" id="9n:6mIaeC0_AZs.S5JyM">
+                        <field name="value">Sorry, vegetarian or local cuisine?</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="goto" id="V_Ry}xzzGE^6![./7BPn">
+                        <field name="stateName">proposeRestaurant</field>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+  <block type="state" id="ZU_jHwm04fTRubRQ2c9." x="1503" y="49">
+    <field name="stateName">askPersona</field>
+    <statement name="actions">
+      <block type="ask_text" id="5fy^KPG5yVPA2vE9-Cc}">
+        <value name="text">
+          <shadow type="text" id="{%6D#4i@c%P.Zw23S%$D">
+            <field name="value">Would you like me to use a male or a female voice?</field>
+          </shadow>
+        </value>
+      </block>
+    </statement>
+    <next>
+      <block type="onresponse_intent" id=".J@z?`0r+]!uujw`0!cm">
+        <value name="intent">
+          <block type="intent_simple" id="ByCC2qLS(jnMK+@ZC(,N">
+            <statement name="exampleBlocks">
+              <block type="intent_example" id="`OPn86GjYn;K-tU@H!.l">
+                <field name="text">male</field>
+                <next>
+                  <block type="intent_example" id=",2$Y[45UUne?u2od7P`c">
+                    <field name="text">a guy</field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </value>
+        <statement name="actions">
+          <block type="goto" id="eb,-3YI%rCyfQV:e`h.%">
+            <field name="stateName">setMale</field>
+          </block>
+        </statement>
+        <next>
+          <block type="onresponse_intent" id="fDb;l*V+M(EGgW4lk:;I">
+            <value name="intent">
+              <block type="intent_simple" id="uKJ(blF;#^L[N(v9#~++">
+                <statement name="exampleBlocks">
+                  <block type="intent_example" id="dl%qpI?%Q3Iei3AUJ6vH">
+                    <field name="text">female</field>
+                  </block>
+                </statement>
+              </block>
+            </value>
+            <statement name="actions">
+              <block type="goto" id="0kR##DsJ}jhCFfJvgurx">
+                <field name="stateName">setFemale</field>
+              </block>
+            </statement>
+            <next>
+              <block type="onresponse_any" id="!5[:Z[svEX2=*`|U.r)h">
+                <statement name="actions">
+                  <block type="say_text" id="@6=;h5!;;3Et:VB|H-xn">
+                    <value name="text">
+                      <shadow type="text" id="la|fIPA.#y5bzIH[9a~8">
+                        <field name="value">Sorry, I didn’t catch that.</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="goto" id="_Y*5xd[QI+4I36}nL!PA">
+                        <field name="stateName">askPersona</field>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+  <block type="state" id="g}CkcQWBRJ-)yk%:ggZD" x="225" y="132">
+    <field name="stateName">makeReservation</field>
+    <statement name="actions">
+      <block type="listen" id="es?Zj@1q@L-hEzZ~Z#:?"></block>
+    </statement>
+    <next>
+      <block type="onresponse_intent" id=",PT^mPJTq-5l;Mxm]#@i">
+        <value name="intent">
+          <block type="intent_yes" id="/I@7CF6m^)D3^R$f_~Zz"></block>
+        </value>
+        <statement name="actions">
+          <block type="say_text" id="}8+ztP,9Sdi+UZFsIBCE">
+            <value name="text">
+              <shadow type="text" id="EK52v=*rdKD=,}_5!t=B">
+                <field name="value">Excellent—table booked at 7 pm.</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="goto" id="GN=re0roQN2U.i5QOrf}">
+                <field name="stateName">closing</field>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="onresponse_intent" id=":NO$GmhmfE9f8Z=fYz#:">
+            <value name="intent">
+              <block type="intent_no" id="ivYnb$iL/,6,3./Od*Go"></block>
+            </value>
+            <statement name="actions">
+              <block type="say_text" id="V7@K9d!MKddxSI8D[2J/">
+                <value name="text">
+                  <shadow type="text" id="ZMd/|PVjo?$`wyQS/Tjn">
+                    <field name="value">Would you like another suggestion or switch to sightseeing?</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="listen" id="^fd2N7oYmYZe]yp)~3n@"></block>
+                </next>
+              </block>
+            </statement>
+            <next>
+              <block type="onresponse_any" id="Dx%iO3_em3zqkTMZp1_2">
+                <statement name="actions">
+                  <block type="say_text" id="gopO@w|qmmhH2V?~_iEo">
+                    <value name="text">
+                      <shadow type="text" id="D{ibeP-r1Sc-tBRe4!r-">
+                        <field name="value">I only catch yes or no—does that work?</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="listen" id="A.V0w+EB(jXA5;^IwN-l"></block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+  <block type="state" id="yXA7uxa+UJ4o=D(n7MbT" x="1168" y="84">
+    <field name="stateName">sightConfirm</field>
+    <statement name="actions">
+      <block type="say_text" id="ojs%q#-]O6CE%,x19w?B">
+        <value name="text">
+          <shadow type="text" id="P1eX@?CZ(^-O`!yV.w28">
+            <field name="value">Was that helpful?</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="action_wait" id="[}G|D^L^#j^Kou4pV%Z7">
+            <field name="delay">600</field>
+            <next>
+              <block type="listen" id="Rk$!s*`dW?;UUIL6D28q"></block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <next>
+      <block type="onresponse_intent" id="!hAL^$|aKUxP?S%iWh9F">
+        <value name="intent">
+          <block type="intent_yes" id="2wc9}R6-}XZJ(:6B_EFW"></block>
+        </value>
+        <statement name="actions">
+          <block type="say_text" id="vd~GalSp=HsAeRVElnOe">
+            <value name="text">
+              <shadow type="text" id="jWNdkda6y`XR,i#_zL78">
+                <field name="value">Fantastic—enjoy!</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="goto" id="87=1VBcLW[[Sm8j![u5Z">
+                <field name="stateName">closing</field>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="onresponse_intent" id="plZ+U-ja/}]NP@Xp(uNQ">
+            <value name="intent">
+              <block type="intent_no" id="nLbyx!Ti%%5vmw~-pFn9"></block>
+            </value>
+            <statement name="actions">
+              <block type="say_text" id="{78@`;AR|hbNA3;Q]y_r">
+                <value name="text">
+                  <shadow type="text" id="0I_w0PYMwih.v2*i`tB4">
+                    <field name="value">Sorry—feel free to ask something else.</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="goto" id="vkl}W$_P]{})A9isRzWd">
+                    <field name="stateName">start</field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+  <block type="state" id="Wr%Or6+9~uIuW?9a_{n2" x="349" y="505">
+    <field name="stateName">greeting</field>
+    <statement name="actions">
+      <block type="attend_user" id="-=I.%M!KnM$k5/3/s[lZ">
+        <next>
+          <block type="action_gesture_param" id=".OCg*kk~jt}Xb9%Xcr.-">
+            <field name="gesture">Smile</field>
+            <value name="strength">
+              <shadow type="text" id="P)9SG#Ta[0=[w25`,s5v">
+                <field name="value">0.3</field>
+              </shadow>
+            </value>
+            <value name="duration">
+              <shadow type="text" id="(s)tyQR6PwU;Qfc{1P3G">
+                <field name="value">0.5</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="say_text" id="9~FLsVPsrST_d5@Bh/R5">
+                <value name="text">
+                  <shadow type="text" id="202NI*v:61lGe;XC!?8D">
+                    <field name="value">Great, I’ll use this voice from now on.                  Welcome to Seabreeze Hotel—I'm your virtual concierge.  How can I help you today?</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="goto" id="`n_]WG95F3m8,LygM1j1">
+                    <field name="stateName">waitForNeed</field>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="state" id="JKFgHLw+90-mUe]LcXJg" x="-343" y="600">
+    <field name="stateName">closing</field>
+    <statement name="actions">
+      <block type="action_gesture" id="}zB96S^4p=T[,sfpiGdF">
+        <field name="gesture">BigSmile</field>
+        <next>
+          <block type="say_text" id="`/7)}{oL~{3~/NBNj|9$">
+            <value name="text">
+              <shadow type="text" id="_L9sGgnx!QDvF}V%CA_=">
+                <field name="value">Enjoy your stay, I’m here if you need anything else! Goodbye!</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="variable_set" id="@|#KLE.]W6DYIg7IayxJ">
+                <field name="variable" id="][VC1l[!yr@$Y=TNu){?" variabletype="GenericValue">done</field>
+                <value name="value">
+                  <block type="text" id=";iRhuLLx*G|L5s}#1tAF">
+                    <field name="value">true</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="action_wait" id="TTHs?N/QU`YxYbUfsY[B">
+                    <field name="delay">2000</field>
+                    <next>
+                      <block type="stop_speaking" id="d%eHn]W$o}Lh@S8s:;,M"></block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="state" id="r%2PY}+z}0J2z*pd/5Xt" x="803" y="619">
+    <field name="stateName">setFemale</field>
+    <statement name="actions">
+      <block type="variable_set" id="WSVD`1iKtQ}K=D=wO~+-">
+        <field name="variable" id="UQ.Cb=H1f-ji_e-}vzLR" variabletype="GenericValue">persona</field>
+        <value name="value">
+          <block type="text" id="(gA6LWuCIZv@Nc?dI=oJ">
+            <field name="value">NIA</field>
+          </block>
+        </value>
+        <next>
+          <block type="action_voice" id="XDA|jP6-]d;id+W2To#;">
+            <field name="voice">Joanna-Neural (en-US) - Amazon Polly</field>
+            <next>
+              <block type="goto" id="!OI~bP4L)k`x%F$zLRz]">
+                <field name="stateName">greeting</field>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="state" id="*Q^ra-:ySUlfLGoL7qE8" x="1099" y="760">
+    <field name="stateName">setMale</field>
+    <statement name="actions">
+      <block type="variable_set" id="`XC2[+1Ej7a7nM=kDNN-">
+        <field name="variable" id="UQ.Cb=H1f-ji_e-}vzLR" variabletype="GenericValue">persona</field>
+        <value name="value">
+          <block type="text" id="3.D$k5mKKN[b_*bII0n^">
+            <field name="value">NIA</field>
+          </block>
+        </value>
+        <next>
+          <block type="action_voice" id="@GhX8p#Al;;!C1%)wO5~">
+            <field name="voice">Gregory-Neural (en-US) - Amazon Polly</field>
+            <next>
+              <block type="goto" id="p:BVq@?SC$H|?V8-{Y7j">
+                <field name="stateName">greeting</field>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>
