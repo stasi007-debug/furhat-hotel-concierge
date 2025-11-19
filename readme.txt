@@ -52,9 +52,6 @@ If any issues arise while accessing or interpreting the materials, feel free to 
 
 n.racheva@student.vu.nl
 a.ciubucova@student.vu.nl
-a.c.d.saram-larssen@student.vu.nl
-l.kondratchik@student.vu.nl
-
 
 
 End of README
